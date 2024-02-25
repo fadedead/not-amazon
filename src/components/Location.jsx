@@ -20,16 +20,68 @@ function Location() {
       </div>
 
       {dialogFlag && (
-        <div className="absolute top-1/2 left-1/2 flex justify-center items-center">
-          <dialog open className="size-96">
-            <button
-              className="w-16 h-10 bg-[#F7CA00] p-1 rounded-lg"
-              onClick={() => {
-                setDialogState(false);
-              }}
-            >
-              Done
-            </button>
+        <div className="h-full w-full absolute top-0 left-0 flex justify-center items-center rounded-lg bg-gray-50 bg-opacity-10">
+          <dialog
+            open
+            className="h-[32rem] w-[30rem] shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+          >
+            <h1 className="font-semibold text-xl bg-[#F0F2F2] p-5">
+              Choose your location
+            </h1>
+            <div className="p-5 flex flex-col gap-4">
+              <p className="text-gray-600">
+                Delivery options and delivery speeds may vary for different
+                locations
+              </p>
+
+              <button className="w-full h-10 bg-[#F7CA00] p-1 rounded-lg">
+                Sign in to see your addresses
+              </button>
+
+              <span className="flex items-center justify-evenly">
+                <hr className="w-36 h-0.5" color="black" />
+                <p className="text-gray-600"> or enter a zip code</p>
+                <hr className="w-36 h-0.5" color="black" />
+              </span>
+
+              <span>
+                <input
+                  type="text"
+                  className="w-52 h-10 p-2 m-2 border-2 border-black rounded-lg"
+                />
+                <button className="w-28 h-10 p-1 border-gray-300 border-2 rounded-lg">
+                  Apply
+                </button>
+              </span>
+
+              <span className="flex items-center justify-center">
+                <hr className="w-1/2 h-0.5" color="black" />
+                <p className="p-1 text-gray-600"> or </p>
+                <hr className="w-1/2 h-0.5" color="black" />
+              </span>
+
+              <span>
+                <select
+                  name="location"
+                  id="loc"
+                  className="w-full p-2 rounded-lg"
+                >
+                  <option value="earth">Earth</option>
+                  <option value="mars">Mars</option>
+                  <option value="moon">Moon</option>
+                  <option value="uranus">Uranus</option>
+                </select>
+              </span>
+
+              <button
+                className="w-16 h-10 bg-[#F7CA00] p-1 rounded-lg self-end"
+                onClick={() => {
+                  setDialogState(false);
+                }}
+              >
+                Done
+              </button>
+            </div>
           </dialog>
         </div>
       )}

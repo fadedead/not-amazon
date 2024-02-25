@@ -8,7 +8,7 @@ import { SignIn } from "./SignIn";
 
 function Header() {
   return (
-    <div className="h-14 flex justify-evenly items-center bg-[#131A22] border-solid border-green-950 border-1">
+    <div className="h-14 w-full flex justify-evenly items-center bg-[#131A22] border-solid border-green-950 border-1">
       <img
         src={Logo}
         alt="LOGO"
