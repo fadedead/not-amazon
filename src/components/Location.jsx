@@ -20,12 +20,20 @@ function Location() {
       </div>
 
       {dialogFlag && (
-        <div className="h-full w-full absolute top-0 left-0 flex justify-center items-center rounded-lg bg-gray-50 bg-opacity-10">
+        <div
+          className="h-full w-full absolute top-0 left-0 flex justify-center items-center bg-black bg-opacity-50"
+          onClick={() => {
+            setDialogState(false);
+          }}
+        >
           <dialog
             open
-            className="h-[32rem] w-[30rem] shadow-[0_3px_10px_rgb(0,0,0,0.2)]"
+            className="h-[30rem] w-[30rem] shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg scale-75"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
           >
-            <h1 className="font-semibold text-xl bg-[#F0F2F2] p-5">
+            <h1 className="font-semibold text-xl bg-[#F0F2F2] p-5 rounded-t-lg">
               Choose your location
             </h1>
             <div className="p-5 flex flex-col gap-4">
@@ -44,10 +52,10 @@ function Location() {
                 <hr className="w-36 h-0.5" color="black" />
               </span>
 
-              <span>
+              <span className="flex justify-between items-center">
                 <input
                   type="text"
-                  className="w-52 h-10 p-2 m-2 border-2 border-black rounded-lg"
+                  className="w-2/3 h-10 p-2 m-2 border-2 border-black rounded-lg"
                 />
                 <button className="w-28 h-10 p-1 border-gray-300 border-2 rounded-lg">
                   Apply
