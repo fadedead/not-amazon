@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const [showMenu, setMenuState] = useState(false);
@@ -22,7 +23,8 @@ function SignIn() {
   };
 
   return (
-    <div
+    <Link
+      to="signin"
       className="relative text-white hover:border-white border-transparent border box-content p-2 text-xs"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -64,7 +66,7 @@ function SignIn() {
           </div>
         </div>
       )}
-    </div>
+    </Link>
   );
 }
 
