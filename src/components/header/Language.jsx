@@ -5,7 +5,7 @@ function Language() {
 
   return (
     <div
-      className="relative text-white hover:border-white hover:border box-content p-2 pt-4 text-xs"
+      className="relative text-white hover:border-white border-transparent border box-content p-2 pt-4 text-xs"
       onMouseEnter={() => {
         setMenuState(true);
       }}

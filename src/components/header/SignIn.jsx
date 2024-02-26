@@ -23,7 +23,7 @@ function SignIn() {
 
   return (
     <div
-      className="relative text-white hover:border-white hover:border box-content p-2 text-xs"
+      className="relative text-white hover:border-white border-transparent border box-content p-2 text-xs"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

@@ -1,4 +1,4 @@
-import Logo from "../assets/Amazon_logo.svg";
+import Logo from "../../assets/Amazon_logo.svg";
 import { Cart } from "./Cart";
 import { Language } from "./Language";
 import { Location } from "./Location";
@@ -12,7 +12,7 @@ function Header() {
       <img
         src={Logo}
         alt="LOGO"
-        className="h-7 hover:border-white hover:border box-content p-2"
+        className="h-7 border-transparent hover:border-white border box-content p-2"
       />
       <Location />
       <SearchBar />

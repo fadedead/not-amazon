@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LocationImg from "../assets/location.svg";
+import LocationImg from "../../assets/location.svg";
 
 function Location() {
   let [dialogFlag, setDialogState] = useState(false);
@@ -7,7 +7,7 @@ function Location() {
   return (
     <div>
       <div
-        className="flex gap-1 text-white hover:border-white hover:border box-content p-2 text-xs"
+        className="flex gap-1 text-white hover:border-white border-transparent border box-content p-2 text-xs"
         onClick={() => {
           setDialogState(true);
         }}

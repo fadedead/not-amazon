@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import SearchImg from "../assets/search-icon.svg";
+import SearchImg from "../../assets/search-icon.svg";
 
 function SearchBar() {
   const [category, setCategory] = useState(["All"]);
@@ -24,7 +24,7 @@ function SearchBar() {
   return (
     <div className={`w-1/2 flex items-center ${brClr}`}>
       <div
-        className={`h-8 bg-[#D4D4D4] p-1 flex justify-center items-center rounded-l-sm text-xs active:border-[#FF9900] active:border-2`}
+        className={`h-8 bg-[#D4D4D4] p-1 flex justify-center items-center rounded-l-sm text-xs active:border-[#FF9900] border-transparent border-2`}
       >
         <select
           name="category"
