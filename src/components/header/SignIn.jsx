@@ -23,14 +23,15 @@ function SignIn() {
   };
 
   return (
-    <Link
-      to="signin"
+    <div
       className="relative text-white hover:border-white border-transparent border box-content p-2 text-xs"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <label>Hello, sign in</label> <br />
-      <b>Accounts & Lists &#x25BC;</b>
+      <Link to="signin">
+        <label>Hello, sign in</label> <br />
+        <b>Accounts & Lists &#x25BC;</b>
+      </Link>
       {showMenu && (
         <div
           className="w-96 absolute -left-24 mt-4 p-4 flex flex-col items-center gap-3 border-2 text-black bg-white rounded-lg"
@@ -41,7 +42,12 @@ function SignIn() {
             <button className="w-48 h-8 bg-[#F7CA00] p-1 rounded-lg">
               Sign In
             </button>
-            <p>New customer? Start here</p>
+            <p>
+              New customer?{" "}
+              <Link to="/register" className="text-blue-600">
+                Start here
+              </Link>
+            </p>
           </div>
           <div className="flex gap-10">
             <div>
@@ -66,7 +72,7 @@ function SignIn() {
           </div>
         </div>
       )}
-    </Link>
+    </div>
   );
 }
 

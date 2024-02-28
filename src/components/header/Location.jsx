@@ -1,8 +1,11 @@
 import { useState } from "react";
 import LocationImg from "../../assets/location.svg";
+import { Link } from "react-router-dom";
 
 function Location() {
   let [dialogFlag, setDialogState] = useState(false);
+
+  let [location, setLocation] = useState("Earth");
 
   return (
     <div>
@@ -15,7 +18,7 @@ function Location() {
         <img src={LocationImg} alt="" className="size-6 p-1" />
         <div>
           <p>Deliver to</p>
-          <b>India</b>
+          <b>{location}</b>
         </div>
       </div>
 
@@ -42,9 +45,11 @@ function Location() {
                 locations
               </p>
 
-              <button className="w-full h-10 bg-[#F7CA00] p-1 rounded-lg">
-                Sign in to see your addresses
-              </button>
+              <Link to="/signin">
+                <button className="w-full h-10 bg-[#F7CA00] p-1 rounded-lg">
+                  Sign in to see your addresses
+                </button>
+              </Link>
 
               <span className="flex items-center justify-evenly">
                 <hr className="w-36 h-0.5" color="black" />
@@ -73,11 +78,16 @@ function Location() {
                   name="location"
                   id="loc"
                   className="w-full p-2 rounded-lg"
+                  onChange={(e) => setLocation(e.target.value)}
+                  value="select a location"
                 >
-                  <option value="earth">Earth</option>
-                  <option value="mars">Mars</option>
-                  <option value="moon">Moon</option>
-                  <option value="uranus">Uranus</option>
+                  <option value="" disabled>
+                    select a location
+                  </option>
+                  <option value="Earth">Earth</option>
+                  <option value="Mars">Mars</option>
+                  <option value="Moon">Moon</option>
+                  <option value="Uranus">Uranus</option>
                 </select>
               </span>
 
