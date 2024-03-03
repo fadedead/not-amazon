@@ -81,7 +81,7 @@ function Location() {
                   onChange={(e) => setLocation(e.target.value)}
                   value="select a location"
                 >
-                  <option value="" disabled>
+                  <option value="select a location" disabled>
                     select a location
                   </option>
                   <option value="Earth">Earth</option>

@@ -10,22 +10,31 @@ function SignInPage() {
   const [showPass, setShowPassword] = useState(false);
 
   async function handleLogin(username, password) {
-    const payload = JSON.stringify({
-      username,
-      password,
-    });
-    return fetch("https://fakestoreapi.com/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: payload,
-    })
-      .then((res) => res.json())
-      .then((json) => alert(`Valid user token generated: ${json.token}`))
-      .catch(() =>
-        alert(`User not in DB, try username: donero and password: ewedon`),
-      );
+    try {
+      const payload = JSON.stringify({
+        username,
+        password,
+      });
+
+      const response = await fetch("https://fakestoreapi.com/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: payload,
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          "User not in DB, try username: donero and password: ewedon",
+        );
+      }
+
+      const json = await response.json();
+      alert(`Valid user token generated: ${json.token}`);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   if (showPass) {
