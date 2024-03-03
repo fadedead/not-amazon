@@ -17,6 +17,7 @@ async function fetchCategories() {
 
 function NavBar() {
   const [showsideBar, setSidebarState] = useState(false);
+  const [closing, setClosing] = useState(false);
 
   const [categories, setCategories] = useState([]);
 
@@ -24,11 +25,21 @@ function NavBar() {
     fetchCategories().then((res) => setCategories(res));
   }, []);
 
+  const closeSidebar = () => {
+    setClosing(true);
+    setTimeout(() => {
+      setSidebarState(false);
+      setClosing(false);
+    }, 190);
+  };
+
   return (
     <>
       {showsideBar && (
-        <div className="absolute top-0 w-full flex h-lvh bg-black bg-opacity-50">
-          <div className="w-96 bg-white overflow-y-auto">
+        <div className="absolute top-0 w-full flex h-lvh bg-black bg-opacity-50 ">
+          <div
+            className={`w-96 bg-white overflow-y-auto ${closing ? "animate-slideOut" : "animate-slideIn"}`}
+          >
             <div className="h-12 pl-6 flex items-center font-bold text-xl text-white bg-[#232F3E]">
               <img className="size-8 m-2" src={ProfileImg} alt="" />
               Hello, sign in
@@ -52,7 +63,7 @@ function NavBar() {
             />
             <hr />
           </div>
-          <div onClick={() => setSidebarState(false)}>
+          <div onClick={closeSidebar}>
             <img className="size-10 m-4" src={CrossImg} alt="close" />
           </div>
         </div>
