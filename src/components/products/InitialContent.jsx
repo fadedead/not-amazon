@@ -9,6 +9,9 @@ function InitialContent() {
   const bnrArr = [bookBnrImg, beautyBnrImg, kitchenBnrImg];
 
   const [gamingGridData, setGamingGridData] = useState({});
+  const [jeweleryGridData, setJeweleryGridData] = useState({});
+  const [menClothingGridData, setMenClothingGridData] = useState({});
+  const [womenClothingGridData, setWomenClothingGridData] = useState({});
 
   useEffect(() => {
     const getItemsUsingIds = async (ids) => {
@@ -29,14 +32,28 @@ function InitialContent() {
 
     const gamingProductIDs = [13, 14, 11, 10];
     getItemsUsingIds(gamingProductIDs).then((res) => setGamingGridData(res));
+
+    const jewleryProductIDs = [13, 14, 11, 10];
+
+    const menclothingProductIDs = [13, 14, 11, 10];
+
+    const womenClothingProductIDs = [13, 14, 11, 10];
   }, []);
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <div className="w-4/5 relative">
-        <BannerSlider bnrArr={bnrArr} />
+    <div className="z-1 w-full flex flex-col items-center bg-[#E3E6E6]">
+      <div className="w-4/5">
+        <div className="z-0 relative">
+          <BannerSlider bnrArr={bnrArr} />
+        </div>
+        <div className="relative -translate-y-96 p-4 grid grid-cols-4">
+          <GridCard
+            title="Gaming accessories"
+            colCount={2}
+            data={gamingGridData}
+          />
+        </div>
       </div>
-      <GridCard title="Gaming accessories" colCount="2" data={gamingGridData} />
     </div>
   );
 }
