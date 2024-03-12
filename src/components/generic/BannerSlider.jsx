@@ -37,7 +37,7 @@ function BannerSlider({ bnrArr }) {
         <div className="flex overflow-clip">
           <div className="w-auto translate-x-2/3 animate-[slideIn_0.2s] ">
             <img src={bnrArr[currImgIndex]} alt="" />
-            <div className="absolute z-1 bottom-0 w-full h-2/3 bg-gradient-to-t from-white to-transparent"></div>
+            <div className="absolute z-1 bottom-0 w-full h-2/3 bg-gradient-to-t from-[#E3E6E6] to-transparent"></div>
           </div>
           <div className="absolute w-auto animate-[slideIn_0.3s]">
             <img
@@ -48,14 +48,14 @@ function BannerSlider({ bnrArr }) {
               }
               alt=""
             />
-            <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-white to-transparent"></div>
+            <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-[#E3E6E6] to-transparent"></div>
           </div>
         </div>
       ) : bnrChangeRight ? (
         <div className="flex overflow-clip">
           <div className="w-auto animate-[slideOut_0.2s] ">
             <img src={bnrArr[currImgIndex]} alt="" />
-            <div className="absolute z-1 bottom-0 w-full h-2/3 bg-gradient-to-t from-white to-transparent"></div>
+            <div className="absolute z-1 bottom-0 w-full h-2/3 bg-gradient-to-t from-[#E3E6E6] to-transparent"></div>
           </div>
           <div className="w-auto animate-[slideOut_0.3s]">
             <img
@@ -66,13 +66,13 @@ function BannerSlider({ bnrArr }) {
               }
               alt=""
             />
-            <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-white to-transparent"></div>
+            <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-[#E3E6E6] to-transparent"></div>
           </div>
         </div>
       ) : (
         <div className="z-0">
           <img src={bnrArr[currImgIndex]} alt="" />
-          <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-white to-transparent"></div>
+          <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-[#E3E6E6] to-transparent"></div>
         </div>
       )}
       <div

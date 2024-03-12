@@ -12,6 +12,9 @@ function InitialContent() {
   const [jeweleryGridData, setJeweleryGridData] = useState({});
   const [menClothingGridData, setMenClothingGridData] = useState({});
   const [womenClothingGridData, setWomenClothingGridData] = useState({});
+  const [dealsInPCData, setDealsInPCData] = useState({});
+  const [portableStorageData, setPortableStorageData] = useState({});
+  const [kidsWearData, setKidsWearData] = useState({});
 
   useEffect(() => {
     const getItemsUsingIds = async (ids) => {
@@ -45,6 +48,17 @@ function InitialContent() {
     getItemsUsingIds(womenClothingProductIDs).then((res) =>
       setWomenClothingGridData(res),
     );
+
+    const dealsInPCID = [13];
+    getItemsUsingIds(dealsInPCID).then((res) => setDealsInPCData(res));
+
+    const portableStorageID = [12];
+    getItemsUsingIds(portableStorageID).then((res) =>
+      setPortableStorageData(res),
+    );
+
+    const kidsWearIDs = [20];
+    getItemsUsingIds(kidsWearIDs).then((res) => setKidsWearData(res));
   }, []);
 
   return (
@@ -53,25 +67,62 @@ function InitialContent() {
         <div className="z-0 relative">
           <BannerSlider bnrArr={bnrArr} />
         </div>
+
         <div className="relative -translate-y-96 p-4 grid grid-cols-4 gap-4">
           <GridCard
             title="Gaming accessories"
             colCount={2}
             data={gamingGridData}
+            expansionText="see more"
           />
 
-          <GridCard title="Jewlery" colCount={2} data={jeweleryGridData} />
+          <GridCard
+            title="Deals in PCs"
+            colCount={1}
+            data={dealsInPCData}
+            expansionText="shop now"
+          />
 
           <GridCard
             title="Mens Clothing"
             colCount={2}
             data={menClothingGridData}
+            expansionText="see more"
           />
 
           <GridCard
             title="Womens Clothing"
             colCount={2}
             data={womenClothingGridData}
+            expansionText="see more"
+          />
+
+          <GridCard
+            title="Trends you like"
+            colCount={2}
+            data={menClothingGridData}
+            expansionText="explore more"
+          />
+
+          <GridCard
+            title="Portable storage under $25"
+            colCount={1}
+            data={portableStorageData}
+            expansionText="see more"
+          />
+
+          <GridCard
+            title="Jewlery"
+            colCount={2}
+            data={jeweleryGridData}
+            expansionText="see more"
+          />
+
+          <GridCard
+            title="Shop kid's wear"
+            colCount={1}
+            data={kidsWearData}
+            expansionText="see more"
           />
         </div>
       </div>
