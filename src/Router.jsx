@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import { SignInPage } from "./components/pages/SignInPage";
 import { RegisterPage } from "./components/pages/RegisterPage";
+import { ProductSearchWithFilters } from "./components/pages/ProductSeachPage";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -10,12 +11,16 @@ const Router = () => {
       element: <App />,
     },
     {
-      path: "signin",
+      path: "/signin",
       element: <SignInPage />,
     },
     {
-      path: "register",
+      path: "/register",
       element: <RegisterPage />,
+    },
+    {
+      path: "/category/:categoryName",
+      element: <ProductSearchWithFilters />,
     },
   ]);
 

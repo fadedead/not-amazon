@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import SearchImg from "../../assets/search-icon.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 function SearchBar() {
+  const navigate = useNavigate();
+
   const [category, setCategory] = useState(["All"]);
   const [catWidth, setCatWidth] = useState(
     `calc(${(category[0].length || 8) / 2}rem + 16px)`,
@@ -19,6 +22,7 @@ function SearchBar() {
 
   const handleSelectChange = (event) => {
     setCatWidth(`calc(${event.target.value.length / 2}rem + 16px)`);
+    navigate(`/category/${event.target.value}`);
   };
 
   return (
