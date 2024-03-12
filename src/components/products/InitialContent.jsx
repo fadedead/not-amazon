@@ -33,11 +33,18 @@ function InitialContent() {
     const gamingProductIDs = [13, 14, 11, 10];
     getItemsUsingIds(gamingProductIDs).then((res) => setGamingGridData(res));
 
-    const jewleryProductIDs = [13, 14, 11, 10];
+    const jewleryProductIDs = [5, 6, 7, 8];
+    getItemsUsingIds(jewleryProductIDs).then((res) => setJeweleryGridData(res));
 
-    const menclothingProductIDs = [13, 14, 11, 10];
+    const menclothingProductIDs = [1, 2, 3, 4];
+    getItemsUsingIds(menclothingProductIDs).then((res) =>
+      setMenClothingGridData(res),
+    );
 
-    const womenClothingProductIDs = [13, 14, 11, 10];
+    const womenClothingProductIDs = [15, 16, 17, 18];
+    getItemsUsingIds(womenClothingProductIDs).then((res) =>
+      setWomenClothingGridData(res),
+    );
   }, []);
 
   return (
@@ -46,11 +53,25 @@ function InitialContent() {
         <div className="z-0 relative">
           <BannerSlider bnrArr={bnrArr} />
         </div>
-        <div className="relative -translate-y-96 p-4 grid grid-cols-4">
+        <div className="relative -translate-y-96 p-4 grid grid-cols-4 gap-4">
           <GridCard
             title="Gaming accessories"
             colCount={2}
             data={gamingGridData}
+          />
+
+          <GridCard title="Jewlery" colCount={2} data={jeweleryGridData} />
+
+          <GridCard
+            title="Mens Clothing"
+            colCount={2}
+            data={menClothingGridData}
+          />
+
+          <GridCard
+            title="Womens Clothing"
+            colCount={2}
+            data={womenClothingGridData}
           />
         </div>
       </div>

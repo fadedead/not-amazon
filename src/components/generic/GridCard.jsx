@@ -8,18 +8,19 @@ function GridCard({ title, colCount, data }) {
     6: `grid-cols-6`,
   };
   return (
-    <div className="p-4 bg-white">
+    <div className="size-[22rem] bg-white flex flex-col gap-2 justify-evenly">
       <p className="text-xl p-1">{title}</p>
       <div
-        className={`grid ${gridSizes[colCount]} justify-items-center items-center`}
+        className={`grid ${gridSizes[colCount]} size-80 gap-6 self-center justify-items-center items-center`}
       >
         {Object.entries(data).map(([name, url]) => (
-          <div className="object-scale-down w-24" key={name}>
-            <img src={url} alt={name} />
+          <div className="size-24" key={name}>
+            <img className="size-full" src={url} alt={name} />
             <p className="text-ellipsis text-nowrap overflow-hidden">{name}</p>
           </div>
         ))}
       </div>
+      <p className="p-2 text-blue-600">see more</p>
     </div>
   );
 }
