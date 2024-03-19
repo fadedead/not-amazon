@@ -28,13 +28,13 @@ function SignIn() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <Link to="signin">
+      <Link to="/signin">
         <label>Hello, sign in</label> <br />
         <b>Accounts & Lists &#x25BC;</b>
       </Link>
       {showMenu && (
         <div
-          className="w-96 absolute -left-24 mt-4 p-4 flex flex-col items-center gap-3 border-2 text-black bg-white rounded-lg"
+          className="w-96 z-10 absolute -left-24 mt-4 p-4 flex flex-col items-center gap-3 border-2 text-black bg-white rounded-lg"
           onMouseEnter={handleMenuMouseEnter}
           onMouseLeave={handleMenuMouseLeave}
         >

@@ -36,7 +36,7 @@ function NavBar() {
   return (
     <>
       {showsideBar && (
-        <div className="absolute top-0 w-full flex h-lvh bg-black bg-opacity-50 ">
+        <div className="absolute z-10 top-0 w-full flex h-lvh bg-black bg-opacity-50 ">
           <div
             className={`w-96 bg-white overflow-y-auto ${closing ? "animate-slideOut" : "animate-slideIn"}`}
           >

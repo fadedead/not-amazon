@@ -62,9 +62,9 @@ function InitialContent() {
   }, []);
 
   return (
-    <div className="z-1 w-full flex flex-col items-center bg-[#E3E6E6]">
+    <div className="w-full flex flex-col items-center bg-[#E3E6E6]">
       <div className="w-4/5">
-        <div className="z-0 relative">
+        <div className="relative">
           <BannerSlider bnrArr={bnrArr} />
         </div>
 

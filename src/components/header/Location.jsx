@@ -24,7 +24,7 @@ function Location() {
 
       {dialogFlag && (
         <div
-          className="h-full w-full absolute top-0 left-0 flex justify-center items-center bg-black bg-opacity-50"
+          className="h-full w-full z-10 absolute top-0 left-0 flex justify-center items-center bg-black bg-opacity-50"
           onClick={() => {
             setDialogState(false);
           }}

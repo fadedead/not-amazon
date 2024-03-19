@@ -16,7 +16,7 @@ function Language() {
       <b>EN &#x25BC;</b>
       {showMenu && (
         <div
-          className="w-40 absolute top-10 p-4 flex flex-col items-center gap-3 border-2 text-black bg-white rounded-lg"
+          className="w-40 absolute z-10 top-10 p-4 flex flex-col items-center gap-3 border-2 text-black bg-white rounded-lg"
           onMouseEnter={() => clearTimeout()}
           onMouseLeave={() => {
             setTimeout(() => setMenuState(false), 500);

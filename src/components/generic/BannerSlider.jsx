@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function BannerSlider({ bnrArr }) {
   const [currImgIndex, setImageIndex] = useState(0);
@@ -89,5 +90,9 @@ function BannerSlider({ bnrArr }) {
     </>
   );
 }
+
+BannerSlider.propTypes = {
+  bnrArr: PropTypes.arrayOf(PropTypes.string),
+};
 
 export { BannerSlider };

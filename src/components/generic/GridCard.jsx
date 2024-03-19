@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import LoadingImg from "../../assets/loading-circle.svg";
 
 function GridCard({ title, colCount, data, expansionText }) {
@@ -44,5 +45,12 @@ function GridCard({ title, colCount, data, expansionText }) {
     </div>
   );
 }
+
+GridCard.propTypes = {
+  title: PropTypes.string,
+  colCount: PropTypes.number,
+  data: PropTypes.object,
+  expansionText: PropTypes.string,
+};
 
 export { GridCard };
