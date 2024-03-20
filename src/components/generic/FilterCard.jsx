@@ -1,15 +1,31 @@
 import PropTypes from "prop-types";
+import { useEffect, useState } from "react";
 
 function FilterCard({ filterKeys, data, setDisplayedData }) {
-  const onFilter = (e, filterType, condition) => {
-    const filtered = data.filter((object) => {
-      return (
-        condition[0] <= object[filterType] && object[filterType] <= condition[1]
+  const [filters, setFilters] = useState({});
+
+  const handleFilter = (e, filterType, condition) => {
+    if (filters[filterType]?.toString() === condition?.toString()) {
+      const newFilters = { ...filters };
+      delete newFilters[filterType];
+      setFilters(newFilters);
+    } else {
+      setFilters({ ...filters, [filterType]: condition });
+    }
+  };
+
+  useEffect(() => {
+    const filtered = data.filter((item) => {
+      return Object.entries(filters).every(
+        ([filterType, condition]) =>
+          condition[0] <= item[filterType] && item[filterType] <= condition[1],
       );
     });
     setDisplayedData(filtered);
-  };
+  }, [filters]);
 
+  // TODO: Add styles
+  // TODO: Get the value from object and make it bold
   return (
     <div>
       {Object.entries(filterKeys).map(([filterType, filterConditions]) => (
@@ -19,7 +35,9 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
             {Object.entries(filterConditions).map(([filterName, condition]) => (
               <div
                 key={filterName}
-                onClick={(e) => onFilter(e, filterType, condition)}
+                onClick={(e) => {
+                  handleFilter(e, filterType, condition);
+                }}
               >
                 {filterName}
               </div>

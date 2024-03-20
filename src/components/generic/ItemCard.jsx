@@ -1,12 +1,11 @@
 import PropTypes from "prop-types";
 
 function ItemCard({ data }) {
-  console.log(data);
   return (
     <div className="flex flex-col">
       <div>{data.title}</div>
       <span>
-        {data.rating.rate} {data.rating.count}
+        {data.rating} {data.rating_count}
       </span>
       <div>{data.price}</div>
     </div>

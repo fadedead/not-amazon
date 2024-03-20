@@ -8,6 +8,7 @@ import { FilterCard } from "../generic/FilterCard";
 function ProductSearchWithFilters() {
   const params = useParams();
   const currentCategory = params.categoryName;
+  // TODO: If current category is all, fetch all the details
 
   const [categoryData, setCategoryData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
@@ -40,11 +41,19 @@ function ProductSearchWithFilters() {
         console.log(error);
       }
     };
-    fetchCategory().then((data) => {
-      setCategoryData(data);
-      setDisplayData(data);
-    });
-  }, []);
+    fetchCategory()
+      .then((data) => {
+        return data.map((value) => ({
+          ...value,
+          rating: value.rating.rate,
+          rating_count: value.rating.count,
+        }));
+      })
+      .then((data) => {
+        setCategoryData(data);
+        setDisplayData(data);
+      });
+  }, [currentCategory]);
 
   return (
     <div>

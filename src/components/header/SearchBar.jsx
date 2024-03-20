@@ -24,7 +24,7 @@ function SearchBar() {
     setCatWidth(`calc(${event.target.value.length / 2}rem + 16px)`);
     navigate(`/category/${event.target.value}`);
   };
-
+  // TODO: The category is not chaning th first time we change the dropdown
   return (
     <div className={`w-1/2 flex items-center ${brClr}`}>
       <div
