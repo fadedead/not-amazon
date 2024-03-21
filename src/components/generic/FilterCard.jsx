@@ -25,7 +25,6 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
   }, [filters]);
 
   // TODO: Add styles
-  // TODO: Get the value from object and make it bold
   return (
     <div>
       {Object.entries(filterKeys).map(([filterType, filterConditions]) => (
@@ -34,6 +33,11 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
           <div>
             {Object.entries(filterConditions).map(([filterName, condition]) => (
               <div
+                className={
+                  filters[filterType]?.toString() === condition?.toString()
+                    ? "font-bold"
+                    : ""
+                }
                 key={filterName}
                 onClick={(e) => {
                   handleFilter(e, filterType, condition);
