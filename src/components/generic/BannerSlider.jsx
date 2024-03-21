@@ -22,6 +22,8 @@ function BannerSlider({ bnrArr }) {
     }, 1000);
   };
 
+  // TODO: Fix the animation of sliders
+
   return (
     <>
       <div

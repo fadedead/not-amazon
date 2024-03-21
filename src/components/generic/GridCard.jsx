@@ -1,7 +1,10 @@
 import PropTypes from "prop-types";
 import LoadingImg from "../../assets/loading-circle.svg";
+import { useNavigate } from "react-router-dom";
 
-function GridCard({ title, colCount, data, expansionText }) {
+function GridCard({ title, colCount, data, expansionText, categoryName }) {
+  const navigate = useNavigate();
+
   const gridSizes = {
     1: `grid-cols-1`,
     2: `grid-cols-2`,
@@ -29,7 +32,10 @@ function GridCard({ title, colCount, data, expansionText }) {
   }
 
   return (
-    <div className="size-[22rem] bg-white flex flex-col gap-2 justify-evenly">
+    <div
+      className="size-[22rem] bg-white flex flex-col gap-2 justify-evenly"
+      onClick={() => navigate(`/category/${categoryName}`)}
+    >
       <p className="p-1 text-xl font-bold">{title}</p>
       <div
         className={`p-2 grid ${gridSizes[colCount]} size-80 gap-4 self-center justify-items-center items-center`}
@@ -51,6 +57,7 @@ GridCard.propTypes = {
   colCount: PropTypes.number,
   data: PropTypes.object,
   expansionText: PropTypes.string,
+  categoryName: PropTypes.string,
 };
 
 export { GridCard };

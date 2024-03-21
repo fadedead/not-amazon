@@ -14,6 +14,7 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
     }
   };
 
+  // TODO: Add a no result found page thing
   useEffect(() => {
     const filtered = data.filter((item) => {
       return Object.entries(filters).every(
@@ -24,12 +25,11 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
     setDisplayedData(filtered);
   }, [filters]);
 
-  // TODO: Add styles
   return (
     <div>
       {Object.entries(filterKeys).map(([filterType, filterConditions]) => (
-        <div key={filterType}>
-          <div>{filterType}</div>
+        <div className="mt-2" key={filterType}>
+          <div className="text-lg font-bold capitalize">{filterType}</div>
           <div>
             {Object.entries(filterConditions).map(([filterName, condition]) => (
               <div

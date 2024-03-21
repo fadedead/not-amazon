@@ -60,7 +60,8 @@ function InitialContent() {
     const kidsWearIDs = [20];
     getItemsUsingIds(kidsWearIDs).then((res) => setKidsWearData(res));
   }, []);
-
+  //TODO: Add the banner sliders
+  //TODO: Add the footer section
   return (
     <div className="w-full flex flex-col items-center bg-[#E3E6E6]">
       <div className="w-4/5">
@@ -74,6 +75,7 @@ function InitialContent() {
             colCount={2}
             data={gamingGridData}
             expansionText="see more"
+            categoryName={"electronics"}
           />
 
           <GridCard
@@ -81,6 +83,7 @@ function InitialContent() {
             colCount={1}
             data={dealsInPCData}
             expansionText="shop now"
+            categoryName={"electronics"}
           />
 
           <GridCard
@@ -88,6 +91,7 @@ function InitialContent() {
             colCount={2}
             data={menClothingGridData}
             expansionText="see more"
+            categoryName={"men's clothing"}
           />
 
           <GridCard
@@ -95,6 +99,7 @@ function InitialContent() {
             colCount={2}
             data={womenClothingGridData}
             expansionText="see more"
+            categoryName={"women's clothing"}
           />
 
           <GridCard
@@ -102,6 +107,7 @@ function InitialContent() {
             colCount={2}
             data={menClothingGridData}
             expansionText="explore more"
+            categoryName={"men's clothing"}
           />
 
           <GridCard
@@ -109,6 +115,7 @@ function InitialContent() {
             colCount={1}
             data={portableStorageData}
             expansionText="see more"
+            categoryName={"electronics"}
           />
 
           <GridCard
@@ -116,6 +123,7 @@ function InitialContent() {
             colCount={2}
             data={jeweleryGridData}
             expansionText="see more"
+            categoryName={"jewelery"}
           />
 
           <GridCard
@@ -123,6 +131,7 @@ function InitialContent() {
             colCount={1}
             data={kidsWearData}
             expansionText="see more"
+            categoryName={"women's clothing"}
           />
         </div>
       </div>

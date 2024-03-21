@@ -8,7 +8,6 @@ import { FilterCard } from "../generic/FilterCard";
 function ProductSearchWithFilters() {
   const params = useParams();
   const currentCategory = params.categoryName;
-  // TODO: If current category is all, fetch all the details
 
   const [categoryData, setCategoryData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
@@ -31,10 +30,13 @@ function ProductSearchWithFilters() {
 
   useEffect(() => {
     const fetchCategory = async () => {
+      const url =
+        currentCategory === "All"
+          ? "https://fakestoreapi.com/products"
+          : `https://fakestoreapi.com/products/category/${currentCategory}`;
+
       try {
-        const res = await fetch(
-          `https://fakestoreapi.com/products/category/${currentCategory}`,
-        );
+        const res = await fetch(url);
         const data = await res.json();
         return data;
       } catch (error) {
