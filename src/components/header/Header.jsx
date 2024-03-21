@@ -7,7 +7,7 @@ import { SearchBar } from "./SearchBar";
 import { SignIn } from "./SignIn";
 import { Cart } from "./Cart";
 
-function Header() {
+function Header({ currentSelected = "All" }) {
   return (
     <div className="h-14 w-full flex justify-evenly items-center bg-[#131A22] border-solid border-green-950 border-1">
       <Link to="/">
@@ -18,7 +18,7 @@ function Header() {
         />
       </Link>
       <Location />
-      <SearchBar />
+      <SearchBar currentSelected={currentSelected} />
       <Language />
       <SignIn />
       <Returns />

@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import SearchImg from "../../assets/search-icon.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
-function SearchBar() {
+function SearchBar({ currentSelected }) {
   const navigate = useNavigate();
 
   const [category, setCategory] = useState(["All"]);
   const [catWidth, setCatWidth] = useState(
-    `calc(${(category[0].length || 8) / 2}rem + 16px)`,
+    `calc(${(currentSelected.length || 8) / 2}rem + 16px)`,
   );
 
   const [brClr, setClr] = useState("border-0");
@@ -24,7 +25,7 @@ function SearchBar() {
     setCatWidth(`calc(${event.target.value.length / 2}rem + 16px)`);
     navigate(`/category/${event.target.value}`);
   };
-  // TODO: The category is not chaning th first time we change the dropdown
+
   return (
     <div className={`w-1/2 flex items-center ${brClr}`}>
       <div
@@ -36,6 +37,7 @@ function SearchBar() {
           className="bg-[#D4D4D4] outline-0 "
           style={{ width: `${catWidth}` }}
           onChange={handleSelectChange}
+          value={currentSelected}
         >
           {Array.from(new Set(category)).map((element, index) => (
             <option key={index} value={element}>
@@ -62,5 +64,9 @@ function SearchBar() {
     </div>
   );
 }
+
+SearchBar.propTypes = {
+  currentSelected: PropTypes.string,
+};
 
 export { SearchBar };

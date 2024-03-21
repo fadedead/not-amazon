@@ -57,15 +57,19 @@ function ProductSearchWithFilters() {
 
   return (
     <div>
-      <Header />
+      <Header currentSelected={currentCategory} />
       <NavBar />
-      <div className="p-8 flex">
+      <div className="w-full p-8 flex justify-between">
         <FilterCard
           filterKeys={filteringObject}
           data={categoryData}
           setDisplayedData={setDisplayData}
         />
-        <div className="">
+        <div className="w-11/12">
+          <h3 className="font-bold text-xl">Results</h3>
+          <p className="text-xs text-gray-900">
+            Check each product page for other buying options.
+          </p>
           {displayData.map((data) => (
             <ItemCard key={data.id} data={data} />
           ))}
