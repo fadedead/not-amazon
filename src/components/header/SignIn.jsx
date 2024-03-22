@@ -39,11 +39,14 @@ function SignIn() {
           onMouseLeave={handleMenuMouseLeave}
         >
           <div className="flex flex-col items-center justify-center gap-2">
-            <button className="w-48 h-8 bg-[#F7CA00] p-1 rounded-lg">
-              Sign In
-            </button>
+            <Link to="/signin">
+              <button className="w-48 h-8 bg-[#F7CA00] p-1 rounded-lg">
+                Sign In
+              </button>
+            </Link>
+
             <p>
-              New customer?{" "}
+              New customer?
               <Link to="/register" className="text-blue-600">
                 Start here
               </Link>
