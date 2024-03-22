@@ -3,6 +3,7 @@ import App from "./App";
 import { SignInPage } from "./components/pages/SignInPage";
 import { RegisterPage } from "./components/pages/RegisterPage";
 import { ProductSearchWithFilters } from "./components/pages/ProductSeachPage";
+import { ProductPage } from "./components/pages/ProductPage";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const Router = () => {
     {
       path: "/category/:categoryName",
       element: <ProductSearchWithFilters />,
+    },
+    {
+      path: "/product/:productId",
+      element: <ProductPage />,
     },
   ]);
 

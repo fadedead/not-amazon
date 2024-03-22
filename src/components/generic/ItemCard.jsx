@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
 function ItemCard({ data }) {
+  const navigate = useNavigate();
   let patternPos = "";
 
   if (data.rating <= 0) {
@@ -26,7 +28,10 @@ function ItemCard({ data }) {
   }
 
   return (
-    <div className="p-4 flex gap-4">
+    <div
+      className="p-4 flex gap-4"
+      onClick={() => navigate(`/product/${data.id}`)}
+    >
       <img className="size-40" src={data.image} alt="" />
       <div className="flex flex-col">
         <h5 className="text-xl font-medium">{data.title}</h5>
