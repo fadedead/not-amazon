@@ -4,11 +4,11 @@ import { InitialContent } from "./components/products/InitialContent";
 
 function App() {
   return (
-    <>
+    <div className="font-sans">
       <Header />
       <NavBar />
       <InitialContent />
-    </>
+    </div>
   );
 }
 

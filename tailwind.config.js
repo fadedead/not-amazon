@@ -2,7 +2,13 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    fontFamily: {
+      sans: ["PT Sans", "sans-serif"],
+    },
     extend: {
+      backgroundImage: {
+        "star-pattern": "url('/src/assets/stars.png')",
+      },
       animation: {
         slideOut: "slideOut 0.2s ease",
         slideIn: "slideIn 0.2s ease",

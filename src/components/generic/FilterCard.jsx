@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 function FilterCard({ filterKeys, data, setDisplayedData }) {
   const [filters, setFilters] = useState({});
 
-  const handleFilter = (e, filterType, condition) => {
+  const handleFilter = (filterType, condition) => {
     if (filters[filterType]?.toString() === condition?.toString()) {
       const newFilters = { ...filters };
       delete newFilters[filterType];
@@ -23,7 +23,7 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
       );
     });
     setDisplayedData(filtered);
-  }, [filters]);
+  }, [filters, data, setDisplayedData]);
 
   return (
     <div>
@@ -39,8 +39,8 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
                     : ""
                 }
                 key={filterName}
-                onClick={(e) => {
-                  handleFilter(e, filterType, condition);
+                onClick={() => {
+                  handleFilter(filterType, condition);
                 }}
               >
                 {filterName}
