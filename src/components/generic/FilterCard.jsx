@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-function FilterCard({ filterKeys, data, setDisplayedData }) {
-  const [filters, setFilters] = useState({});
-
+function FilterCard({
+  filterKeys,
+  data,
+  setDisplayedData,
+  filters,
+  setFilters,
+}) {
   const handleFilter = (filterType, condition) => {
     if (filters[filterType]?.toString() === condition?.toString()) {
       const newFilters = { ...filters };
@@ -14,7 +18,6 @@ function FilterCard({ filterKeys, data, setDisplayedData }) {
     }
   };
 
-  // TODO: Add a no result found page thing
   useEffect(() => {
     const filtered = data.filter((item) => {
       return Object.entries(filters).every(

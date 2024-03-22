@@ -12,6 +12,8 @@ function ProductSearchWithFilters() {
   const [categoryData, setCategoryData] = useState([]);
   const [displayData, setDisplayData] = useState([]);
 
+  const [filters, setFilters] = useState({});
+
   const filteringObject = {
     price: {
       "under $10": [0, 10],
@@ -55,6 +57,9 @@ function ProductSearchWithFilters() {
         setCategoryData(data);
         setDisplayData(data);
       });
+
+    // Clear filters when category changes
+    setFilters({});
   }, [currentCategory]);
 
   return (
@@ -66,15 +71,25 @@ function ProductSearchWithFilters() {
           filterKeys={filteringObject}
           data={categoryData}
           setDisplayedData={setDisplayData}
+          filters={filters}
+          setFilters={setFilters}
         />
         <div className="w-11/12">
-          <h3 className="font-bold text-xl">Results</h3>
-          <p className="text-xs text-gray-900">
-            Check each product page for other buying options.
-          </p>
-          {displayData.map((data) => (
-            <ItemCard key={data.id} data={data} />
-          ))}
+          {displayData.length > 0 ? (
+            <>
+              <h3 className="font-bold text-xl">Results</h3>
+              <p className="text-xs text-gray-900">
+                Check each product page for other buying options.
+              </p>
+              {displayData.map((data) => (
+                <ItemCard key={data.id} data={data} />
+              ))}
+            </>
+          ) : (
+            <div className="text-xl flex justify-center items-center">
+              No items with current filers
+            </div>
+          )}
         </div>
       </div>
     </div>
