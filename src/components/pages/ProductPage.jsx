@@ -34,7 +34,7 @@ function ProductPage() {
       <Header />
       <NavBar />
       {productData.id ? (
-        <div className="w-4/5 m-auto p-8 flex border border-red-900">
+        <div className="w-4/5 m-auto p-8 flex">
           <img className="size-96 mr-auto" src={productData.image} alt="" />
           <div className="w-1/2">
             <h1 className="text-2xl font-medium">{productData.title}</h1>
@@ -42,7 +42,7 @@ function ProductPage() {
             {productData.price > 30 ? (
               <>
                 <span className="pt-2 flex gap-2 text-2xl font-medium">
-                  $ {Math.round(productData.price / 6)}{" "}
+                  $ {Math.round(productData.price / 6)}
                   <p className="text-lg text-gray-700 self-end">
                     /month (6 months)
                   </p>
@@ -63,7 +63,28 @@ function ProductPage() {
             <hr className="bg-gray-400 h-[2px]" />
             <p className="pt-2">{productData.description}</p>
           </div>
-          <div className="ml-auto">Buy stuff</div>
+          <div className="ml-auto">
+            <div className="w-64 p-4 flex flex-col gap-2 border border-gray-300">
+              <div className="text-3xl font-normal">$ {productData.price}</div>
+              <p className="text-xl font-normal text-green-900">In stock</p>
+              <span className="flex gap-2">
+                <p>Qunatity: </p>
+                <select>
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <option key={index + 1} value={index + 1}>
+                      {index + 1}
+                    </option>
+                  ))}
+                </select>
+              </span>
+              <button className="w-56 h-8 bg-[#FFD814] rounded-2xl">
+                Add to cart
+              </button>
+              <button className="w-56 h-8 bg-[#FFA41C] rounded-2xl">
+                Buy now
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <div></div>
