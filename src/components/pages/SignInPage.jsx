@@ -43,7 +43,7 @@ function SignInPage() {
         <LoginCard>
           <h1 className="text-3xl font-bold">Sign in</h1>
           <p>
-            {creds.username}{" "}
+            {creds.username}
             <span
               className="text-blue-600"
               onClick={() => setShowPassword(false)}
