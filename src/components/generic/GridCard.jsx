@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
-import LoadingImg from "../../assets/loading-circle.svg";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "./Loading";
 
 function GridCard({ title, colCount, data, expansionText, categoryName }) {
   const navigate = useNavigate();
@@ -22,11 +22,7 @@ function GridCard({ title, colCount, data, expansionText, categoryName }) {
   if (Object.keys(data).length < 1) {
     return (
       <div className="size-[22rem] bg-white flex justify-center items-center">
-        <img
-          className="animate-spin size-12"
-          src={LoadingImg}
-          alt="Loading..."
-        />
+        <Loading size="size-12" />
       </div>
     );
   }

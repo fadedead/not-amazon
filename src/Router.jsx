@@ -4,6 +4,7 @@ import { SignInPage } from "./components/pages/SignInPage";
 import { RegisterPage } from "./components/pages/RegisterPage";
 import { ProductSearchWithFilters } from "./components/pages/ProductSeachPage";
 import { ProductPage } from "./components/pages/ProductPage";
+import { CartPage } from "./components/pages/CartPage";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const Router = () => {
     {
       path: "/product/:productId",
       element: <ProductPage />,
+    },
+    {
+      path: "/cart",
+      element: <CartPage />,
     },
   ]);
 

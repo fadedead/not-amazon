@@ -3,12 +3,17 @@ import { Header } from "../header/Header";
 import { NavBar } from "../nav/NavBar";
 import { useEffect, useState } from "react";
 import { ErrorPage } from "./ErrorPage";
+import { useNavigate } from "react-router-dom";
+import { Loading } from "../generic/Loading";
 
 function ProductPage() {
+  const navigate = useNavigate();
+
   const params = useParams();
   const productId = params.productId;
 
   const [productData, setProductData] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,12 +28,20 @@ function ProductPage() {
       }
     };
 
-    fetchProduct().then((data) => {
-      setProductData(data);
-    });
+    fetchProduct()
+      .then((data) => setProductData(data))
+      .then(() => setLoading(false));
   }, [productId]);
 
-  if (!productData.id) {
+  if (loading) {
+    return (
+      <div className="w-lvw h-lvh flex items-center justify-center">
+        <Loading size="size-24" />
+      </div>
+    );
+  }
+
+  if (!loading && !productData.id) {
     return <ErrorPage />;
   }
 
@@ -79,7 +92,10 @@ function ProductPage() {
                 ))}
               </select>
             </span>
-            <button className="w-56 h-8 bg-[#FFD814] rounded-2xl">
+            <button
+              onClick={() => navigate("/cart")}
+              className="w-56 h-8 bg-[#FFD814] rounded-2xl"
+            >
               Add to cart
             </button>
             <button className="w-56 h-8 bg-[#FFA41C] rounded-2xl">

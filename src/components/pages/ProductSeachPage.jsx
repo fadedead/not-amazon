@@ -4,6 +4,7 @@ import { NavBar } from "../nav/NavBar";
 import { useEffect, useState } from "react";
 import { ItemCard } from "../generic/ItemCard";
 import { FilterCard } from "../generic/FilterCard";
+import { Loading } from "../generic/Loading";
 
 function ProductSearchWithFilters() {
   const params = useParams();
@@ -13,6 +14,8 @@ function ProductSearchWithFilters() {
   const [displayData, setDisplayData] = useState([]);
 
   const [filters, setFilters] = useState({});
+
+  const [loading, setLoading] = useState(true);
 
   const filteringObject = {
     price: {
@@ -56,7 +59,8 @@ function ProductSearchWithFilters() {
       .then((data) => {
         setCategoryData(data);
         setDisplayData(data);
-      });
+      })
+      .then(() => setLoading(false));
 
     // Clear filters when category changes
     setFilters({});
@@ -75,7 +79,11 @@ function ProductSearchWithFilters() {
           setFilters={setFilters}
         />
         <div className="w-11/12">
-          {displayData.length > 0 ? (
+          {loading ? (
+            <div className="h-full flex justify-center items-center">
+              <Loading size="size-24" />
+            </div>
+          ) : displayData.length > 0 ? (
             <>
               <h3 className="font-bold text-xl">Results</h3>
               <p className="text-xs text-gray-900">
