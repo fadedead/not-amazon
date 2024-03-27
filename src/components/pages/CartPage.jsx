@@ -20,6 +20,31 @@ function CartPage() {
     });
   };
 
+  const handleSelectUpdate = (productId) => {
+    setSelectedToBuy((prevSelected) => {
+      const updatedSelected = { ...prevSelected };
+
+      if (!updatedSelected[productId]) {
+        updatedSelected[productId] = itemQuantity[productId];
+      } else {
+        delete updatedSelected[productId];
+      }
+
+      return updatedSelected;
+    });
+  };
+
+  const totalCostOfSelected = () => {
+    let total = 0;
+    for (let item of Object.keys(selectedToBuy)) {
+      total +=
+        cartItems.find((object) => object.id == item)?.price *
+        parseInt(itemQuantity[item]);
+    }
+
+    return total;
+  };
+
   useEffect(() => {
     const localCart = JSON.parse(localStorage.getItem("cart")) || {};
 
@@ -52,8 +77,8 @@ function CartPage() {
       <Header />
       <NavBar />
       <div className="flex justify-center">
-        <div className="w-4/5 flex justify-between">
-          <div className="w-2/3">
+        <div className="w-4/5 gap-8 flex justify-between">
+          <div className="w-3/4 p-6 bg-white">
             <div>
               <p>Shopping Cart</p>
               <p>Deselect all items</p>
@@ -65,6 +90,11 @@ function CartPage() {
                     <hr className="h-[2px] bg-gray-300" />
                     <br />
                     <div className="flex gap-4">
+                      <input
+                        type="checkbox"
+                        checked={selectedToBuy[data.id] ? true : false}
+                        onChange={() => handleSelectUpdate(data.id)}
+                      />
                       <img
                         onClick={() => navigate(`/product/${data.id}`)}
                         className="size-24"
@@ -115,9 +145,13 @@ function CartPage() {
             </div>
             <br />
             <hr className="h-[2px] bg-gray-300" />
-            <p>Subtotal</p>
+            <div className="flex gap-2 justify-end">
+              <p>Subtotal</p>
+              <p>({Object.keys(selectedToBuy).length} items):</p>
+              <p>{totalCostOfSelected()}</p>
+            </div>
           </div>
-          <div className="w-1/4 border border-black"></div>
+          <div className="w-1/4 bg-white"></div>
         </div>
       </div>
     </div>
