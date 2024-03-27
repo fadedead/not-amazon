@@ -15,6 +15,17 @@ function ProductPage() {
   const [productData, setProductData] = useState({});
   const [loading, setLoading] = useState(true);
 
+  const [quantity, setQuantity] = useState(1);
+
+  const setCartItemLocalStorage = () => {
+    const localCart = JSON.parse(localStorage.getItem("cart")) || {};
+    if (!localCart[productData.id]) {
+      localCart[productData.id] = 0;
+    }
+    localCart[productData.id] += quantity;
+    localStorage.setItem("cart", JSON.stringify(localCart));
+  };
+
   useEffect(() => {
     const fetchProduct = async () => {
       const url = `https://fakestoreapi.com/products/${productId}`;
@@ -84,7 +95,9 @@ function ProductPage() {
             <p className="text-xl font-normal text-green-900">In stock</p>
             <span className="flex gap-2">
               <p>Qunatity: </p>
-              <select>
+              <select
+                onChange={(event) => setQuantity(parseInt(event.target.value))}
+              >
                 {Array.from({ length: 5 }, (_, index) => (
                   <option key={index + 1} value={index + 1}>
                     {index + 1}
@@ -93,7 +106,10 @@ function ProductPage() {
               </select>
             </span>
             <button
-              onClick={() => navigate("/cart")}
+              onClick={() => {
+                navigate("/cart");
+                setCartItemLocalStorage();
+              }}
               className="w-56 h-8 bg-[#FFD814] rounded-2xl"
             >
               Add to cart
