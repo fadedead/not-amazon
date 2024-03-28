@@ -22,7 +22,8 @@ function ProductPage() {
     if (!localCart[productData.id]) {
       localCart[productData.id] = 0;
     }
-    localCart[productData.id] += quantity;
+    localCart[productData.id] =
+      parseInt(localCart[productData.id]) + parseInt(quantity);
     localStorage.setItem("cart", JSON.stringify(localCart));
   };
 
