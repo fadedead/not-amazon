@@ -23,7 +23,10 @@ function CartItems({
     setItemQuantity((itemQuantity) => {
       if (newQuantity == 0) {
         deleteItem(productId);
-        return;
+        return itemQuantity;
+      }
+      if (newQuantity == 6) {
+        setShowSelectInput(true);
       }
       itemQuantity = { ...itemQuantity, [productId]: newQuantity };
       localStorage.setItem("cart", JSON.stringify(itemQuantity));
@@ -65,6 +68,18 @@ function CartItems({
     });
   };
 
+  const handleSelectAll = (bool) => {
+    setSelectedToBuy(() => {
+      const updatedSelected = {};
+      if (bool) {
+        for (let product of cartItems) {
+          updatedSelected[product.id] = true;
+        }
+      }
+      return updatedSelected;
+    });
+  };
+
   useEffect(() => {
     if (cartItems.length > 0) setLoading(false);
 
@@ -102,8 +117,16 @@ function CartItems({
   return (
     <div className="w-4/5 p-6 bg-white">
       <div>
-        <p>Shopping Cart</p>
-        <p>Deselect all items</p>
+        <p className="text-3xl">Shopping Cart</p>
+        {cartItems.length === Object.keys(selectedToBuy).length ? (
+          <p className="text-blue-900" onClick={() => handleSelectAll(false)}>
+            Deselect all items
+          </p>
+        ) : (
+          <p className="text-blue-900" onClick={() => handleSelectAll(true)}>
+            Select all items
+          </p>
+        )}
       </div>
 
       <div className="flex flex-col gap-4">
@@ -126,7 +149,7 @@ function CartItems({
                   alt=""
                 />
 
-                <div className="">
+                <div className="flex flex-col gap-1">
                   <p
                     onClick={() => navigate(`/product/${data.id}`)}
                     className="text-xl cursor-pointer"
@@ -152,18 +175,20 @@ function CartItems({
                     onChange={(event) =>
                       localStorageUpdateWithCart(data.id, event.target.value)
                     }
+                    className="w-8"
                   >
-                    {Array.from({ length: 6 }, (_, index) => {
-                      return (
-                        <option key={index} value={index}>
-                          {index == 0 ? `(${index}) delete` : `${index}`}
-                        </option>
-                      );
-                    })}
+                    {Array.from({ length: 6 }, (_, index) => (
+                      <option key={index} value={index}>
+                        {index === 0 ? `(${index}) delete` : `${index}`}
+                      </option>
+                    ))}
+                    {}
                   </select>
                 </div>
 
-                <p className="ml-auto text-xl font-semibold">$ {data.price}</p>
+                <p className="w-24 ml-auto text-xl font-semibold">
+                  $ {data.price}
+                </p>
               </div>
             </div>
           );
@@ -173,7 +198,14 @@ function CartItems({
       <hr className="h-[2px] bg-gray-300" />
       <div className="flex gap-1 justify-end">
         <p>Subtotal</p>
-        <p>({Object.keys(selectedToBuy).length} items):</p>
+        <p>
+          (
+          {Object.keys(selectedToBuy).reduce(
+            (acc, val) => acc + parseInt(itemQuantity[val]),
+            0,
+          )}{" "}
+          items):
+        </p>
         <p>{totalCostOfSelected}</p>
       </div>
     </div>

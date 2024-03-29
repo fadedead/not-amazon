@@ -77,7 +77,7 @@ function ProductPage() {
               <p className="text-sm">With no cost EMI</p>
               <span className="pt-2 flex gap-2 items-center">
                 <p className="text-red-500">
-                  -{Math.round(Math.random() * 80)}%
+                  -{Math.round((productData.price * 26) / 100) % 100}%
                 </p>
                 <p className="text-lg">$ {productData.price}</p>
               </span>

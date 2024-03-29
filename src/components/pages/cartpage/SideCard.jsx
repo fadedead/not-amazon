@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 function SideCard({ itemsCount, totalCostOfSelected, setGift, isGift }) {
   return (
-    <div className="w-1/5 p-6 flex gap-2 flex-col bg-white">
+    <div className="h-max w-1/5 p-6 flex gap-2 flex-col bg-white">
       <div className="flex gap-2 text-xl">
         <p>Subtotal</p>
         <p>({itemsCount} items):</p>

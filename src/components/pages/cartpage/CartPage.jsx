@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../header/Header";
 import { NavBar } from "../../nav/NavBar";
-import { Loading } from "../../generic/Loading";
 import { CartItems } from "./CartItems";
 import { SideCard } from "./SideCard";
 
@@ -20,8 +19,7 @@ function CartPage() {
         cartItems.find((object) => object.id == item)?.price *
         parseInt(itemQuantity[item]);
     }
-
-    return total;
+    return total.toFixed(2) || 0;
   };
 
   useEffect(() => {
@@ -49,11 +47,6 @@ function CartPage() {
     setItemQuantity(localCart);
   }, []);
 
-  // Todo: Styling
-  // Todo: Checkout page
-  // Todo: Dynamic select
-  // Todo: delete button
-
   return (
     <div className="h-lvh bg-[#eaeded]">
       <Header />
@@ -74,7 +67,10 @@ function CartPage() {
           />
 
           <SideCard
-            itemsCount={Object.keys(selectedToBuy).length}
+            itemsCount={Object.keys(selectedToBuy).reduce(
+              (acc, val) => acc + parseInt(itemQuantity[val]),
+              0,
+            )}
             totalCostOfSelected={totalCostOfSelected()}
             setGift={setGift}
             isGift={isGift}
