@@ -22,8 +22,8 @@ function ProductPage() {
     if (!localCart[productData.id]) {
       localCart[productData.id] = 0;
     }
-    localCart[productData.id] =
-      parseInt(localCart[productData.id]) + parseInt(quantity);
+    const itemCount = parseInt(localCart[productData.id]) + parseInt(quantity);
+    localCart[productData.id] = itemCount > 5 ? 5 : itemCount;
     localStorage.setItem("cart", JSON.stringify(localCart));
   };
 
