@@ -21,36 +21,31 @@ function CartItems({
 
   const localStorageUpdateWithCart = (productId, newQuantity) => {
     setItemQuantity((itemQuantity) => {
-      if (newQuantity == 0) {
+      if (newQuantity === 0) {
         deleteItem(productId);
-        return itemQuantity;
-      }
-      if (newQuantity == 6) {
-        setShowSelectInput(true);
+        delete itemQuantity[productId];
+        localStorage.setItem("cart", JSON.stringify(itemQuantity));
+        return { ...itemQuantity };
       }
       itemQuantity = { ...itemQuantity, [productId]: newQuantity };
       localStorage.setItem("cart", JSON.stringify(itemQuantity));
-      return itemQuantity;
+      return { ...itemQuantity };
     });
   };
 
   const deleteItem = (productId) => {
     setCartItems((cartItems) => {
-      const index = cartItems.find((object) => object.id == productId);
-      cartItems.splice(index, 1);
-      if (cartItems.length == 0) setNoItems(true);
-      return cartItems;
-    });
-
-    setItemQuantity((itemQuantity) => {
-      delete itemQuantity[productId];
-      localStorage.setItem("cart", JSON.stringify(itemQuantity));
-      return itemQuantity;
+      const updatedCartItems = cartItems.filter(
+        (item) => item.id !== productId,
+      );
+      if (updatedCartItems.length === 0) setNoItems(true);
+      return updatedCartItems;
     });
 
     setSelectedToBuy((selectedToBuy) => {
-      delete selectedToBuy[productId];
-      return selectedToBuy;
+      const updatedSelected = { ...selectedToBuy };
+      delete updatedSelected[productId];
+      return updatedSelected;
     });
   };
 
@@ -168,22 +163,29 @@ function CartItems({
                     <p>Add gift options</p>
                   </span>
 
-                  <select
-                    name="quantity"
-                    id="quantity"
-                    value={itemQuantity[data.id]}
-                    onChange={(event) =>
-                      localStorageUpdateWithCart(data.id, event.target.value)
-                    }
-                    className="w-8"
-                  >
-                    {Array.from({ length: 6 }, (_, index) => (
-                      <option key={index} value={index}>
-                        {index === 0 ? `(${index}) delete` : `${index}`}
-                      </option>
-                    ))}
-                    {}
-                  </select>
+                  <div className="flex gap-2">
+                    <select
+                      name="quantity"
+                      id="quantity"
+                      value={itemQuantity[data.id]}
+                      onChange={(event) =>
+                        localStorageUpdateWithCart(data.id, event.target.value)
+                      }
+                      className="w-8"
+                    >
+                      {Array.from({ length: 6 }, (_, index) => (
+                        <option key={index} value={index}>
+                          {index === 0 ? `(${index}) delete` : `${index}`}
+                        </option>
+                      ))}
+                    </select>
+                    <p
+                      onClick={() => localStorageUpdateWithCart(data.id, 0)}
+                      className="text-blue-900 cursor-pointer"
+                    >
+                      delete
+                    </p>
+                  </div>
                 </div>
 
                 <p className="w-24 ml-auto text-xl font-semibold">
@@ -212,16 +214,17 @@ function CartItems({
   );
 }
 
+// PropTypes for type checking
 CartItems.propTypes = {
-  cartItems: PropTypes.arrayOf(PropTypes.object),
-  setCartItems: PropTypes.func,
-  selectedToBuy: PropTypes.object,
-  setSelectedToBuy: PropTypes.func,
-  itemQuantity: PropTypes.object,
-  setItemQuantity: PropTypes.func,
-  isGift: PropTypes.bool,
-  setGift: PropTypes.func,
-  totalCostOfSelected: PropTypes.number,
+  cartItems: PropTypes.array.isRequired,
+  setCartItems: PropTypes.func.isRequired,
+  selectedToBuy: PropTypes.object.isRequired,
+  setSelectedToBuy: PropTypes.func.isRequired,
+  itemQuantity: PropTypes.object.isRequired,
+  setItemQuantity: PropTypes.func.isRequired,
+  isGift: PropTypes.bool.isRequired,
+  setGift: PropTypes.func.isRequired,
+  totalCostOfSelected: PropTypes.number.isRequired,
 };
 
 export { CartItems };

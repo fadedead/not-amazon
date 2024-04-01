@@ -5,6 +5,7 @@ import { RegisterPage } from "./components/pages/RegisterPage";
 import { ProductSearchWithFilters } from "./components/pages/ProductSeachPage";
 import { ProductPage } from "./components/pages/ProductPage";
 import { CartPage } from "./components/pages/cartpage/CartPage";
+import { CheckoutPage } from "./components/pages/CheckoutPage";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const Router = () => {
     {
       path: "/cart",
       element: <CartPage />,
+    },
+    {
+      path: "/cart/checkout",
+      element: <CheckoutPage />,
     },
   ]);
 
