@@ -9,7 +9,7 @@ function CartPage() {
 
   const [cartItems, setCartItems] = useState([]);
   const [selectedToBuy, setSelectedToBuy] = useState({});
-  const [itemQuantity, setItemQuantity] = useState();
+  const [itemQuantity, setItemQuantity] = useState({});
   const [isGift, setGift] = useState(false);
 
   const totalCostOfSelected = () => {
@@ -19,7 +19,8 @@ function CartPage() {
         cartItems.find((object) => object.id == item)?.price *
         parseInt(itemQuantity[item]);
     }
-    return isNaN(total) ? 0 : total.toFixed(2);
+
+    return isNaN(total) ? 0 : Number(total.toFixed(2));
   };
 
   useEffect(() => {
@@ -76,6 +77,7 @@ function CartPage() {
             isGift={isGift}
             cartItems={cartItems}
             selectedToBuy={selectedToBuy}
+            itemQuantity={itemQuantity}
           />
         </div>
       </div>

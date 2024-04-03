@@ -9,17 +9,22 @@ function SideCard({
   isGift,
   cartItems,
   selectedToBuy,
+  itemQuantity,
 }) {
   const [checkoutItems, setCheckoutItems] = useState([]);
 
   useEffect(() => {
     const currCheckoutItems = [];
     for (let obj of cartItems) {
-      if (selectedToBuy[obj.id]) currCheckoutItems.push(obj);
+      const newObj = { ...obj };
+      if (selectedToBuy[newObj.id]) {
+        newObj.quantity = itemQuantity[newObj.id];
+        currCheckoutItems.push(newObj);
+      }
     }
 
     setCheckoutItems(currCheckoutItems);
-  }, [cartItems, selectedToBuy]);
+  }, [cartItems, selectedToBuy, itemQuantity]);
 
   return (
     <div className="h-max w-1/5 p-6 flex gap-2 flex-col bg-white">
@@ -54,6 +59,7 @@ SideCard.propTypes = {
   setGift: PropTypes.func.isRequired,
   cartItems: PropTypes.array.isRequired,
   selectedToBuy: PropTypes.object.isRequired,
+  itemQuantity: PropTypes.object.isRequired,
 };
 
 export { SideCard };
