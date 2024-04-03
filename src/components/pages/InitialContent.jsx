@@ -1,9 +1,9 @@
 import bookBnrImg from "../../assets/banners/books_banner.jpg";
 import beautyBnrImg from "../../assets/banners/beauty_banner.jpg";
 import kitchenBnrImg from "../../assets/banners/kitchen_banner.jpg";
-import { BannerSlider } from "../generic/BannerSlider";
 import { GridCard } from "../generic/GridCard";
 import { useEffect, useState } from "react";
+import { Carousel } from "../generic/Carousel";
 
 function InitialContent() {
   const bnrArr = [bookBnrImg, beautyBnrImg, kitchenBnrImg];
@@ -65,11 +65,11 @@ function InitialContent() {
   return (
     <div className="w-full flex flex-col items-center bg-[#E3E6E6]">
       <div className="w-4/5">
-        <div className="relative">
-          <BannerSlider bnrArr={bnrArr} />
-        </div>
+        <Carousel autoSlide={true}>
+          {[...bnrArr.map((s, i) => <img key={i} src={s} alt="" />)]}
+        </Carousel>
 
-        <div className="relative -translate-y-96 p-4 grid grid-cols-4 gap-4">
+        <div className="relative -translate-y-96 p-4 grid grid-cols-4 gap-6">
           <GridCard
             title="Gaming accessories"
             colCount={2}
