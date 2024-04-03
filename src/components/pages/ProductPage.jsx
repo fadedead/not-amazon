@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ErrorPage } from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../generic/Loading";
+import { StarRating } from "../generic/StarRating";
 
 function ProductPage() {
   const navigate = useNavigate();
@@ -41,6 +42,13 @@ function ProductPage() {
     };
 
     fetchProduct()
+      .then((data) => {
+        return {
+          ...data,
+          rating: data.rating.rate,
+          rating_count: data.rating.count,
+        };
+      })
       .then((data) => setProductData(data))
       .then(() => setLoading(false));
   }, [productId]);
@@ -65,6 +73,10 @@ function ProductPage() {
         <img className="size-96 mr-auto" src={productData.image} alt="" />
         <div className="w-1/2">
           <h1 className="text-2xl font-medium">{productData.title}</h1>
+          <StarRating
+            rating={productData.rating}
+            ratingCount={productData.rating_count}
+          />
           <hr className="bg-gray-400 h-[2px]" />
           {productData.price > 30 ? (
             <>
