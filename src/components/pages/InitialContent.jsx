@@ -1,12 +1,20 @@
-import bookBnrImg from "../../assets/banners/books_banner.jpg";
-import beautyBnrImg from "../../assets/banners/beauty_banner.jpg";
-import kitchenBnrImg from "../../assets/banners/kitchen_banner.jpg";
+import BookBnrImg from "../../assets/banners/books_banner.jpg";
+import BeautyBnrImg from "../../assets/banners/beauty_banner.jpg";
+import KitchenBnrImg from "../../assets/banners/kitchen_banner.jpg";
+import ToysBnrImg from "../../assets/banners/toys_banner.jpg";
+import GameBnrImg from "../../assets/banners/games_banner.jpg";
 import { GridCard } from "../generic/GridCard";
 import { useEffect, useState } from "react";
 import { Carousel } from "../generic/Carousel";
 
 function InitialContent() {
-  const bnrArr = [bookBnrImg, beautyBnrImg, kitchenBnrImg];
+  const bnrArr = [
+    BookBnrImg,
+    BeautyBnrImg,
+    KitchenBnrImg,
+    ToysBnrImg,
+    GameBnrImg,
+  ];
 
   const [gamingGridData, setGamingGridData] = useState({});
   const [jeweleryGridData, setJeweleryGridData] = useState({});
