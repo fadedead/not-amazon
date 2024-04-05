@@ -14,7 +14,7 @@ async function fetchCategories() {
     return [];
   }
 }
-// Todo: add <Link>
+
 function NavBar() {
   const [showsideBar, setSidebarState] = useState(false);
   const [closing, setClosing] = useState(false);
@@ -22,7 +22,11 @@ function NavBar() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetchCategories().then((res) => setCategories(res));
+    fetchCategories()
+      .then((res) => {
+        return res.map((item) => ({ name: item, link: `/category/${item}` }));
+      })
+      .then((res) => setCategories(res));
   }, []);
 
   const closeSidebar = () => {
@@ -44,22 +48,32 @@ function NavBar() {
               <img className="size-8 m-2" src={ProfileImg} alt="" />
               Hello, sign in
             </div>
-            <Category title="Shop By department" items={categories} />
+            <Category
+              title="Shop By department"
+              items={categories}
+              closeSidebar={closeSidebar}
+            />
             <hr />
             <Category
               title="Programs & Features"
-              items={["Gift Cards", "Amazon Live", "International Shopping"]}
+              items={[
+                { name: "Gift Cards", link: "" },
+                { name: "Amazon Live", link: "" },
+                { name: "International Shopping", link: "" },
+              ]}
+              closeSidebar={closeSidebar}
             />
             <hr />
             <Category
               title="Help & Settings"
               items={[
-                "Your Account",
-                "English",
-                "United States",
-                "Customer Service",
-                "Sign In",
+                { name: "Your Account", link: "" },
+                { name: "English", link: "" },
+                { name: "United States", link: "" },
+                { name: "Customer Service", link: "" },
+                { name: "Sign In", link: "/signin" },
               ]}
+              closeSidebar={closeSidebar}
             />
             <hr />
           </div>
