@@ -1,6 +1,6 @@
 import { Header } from "./components/header/Header";
 import { NavBar } from "./components/nav/NavBar";
-import { InitialContent } from "./components/pages/InitialContent";
+import { InitialContent } from "./components/pages/initialpage/InitialContent";
 
 function App() {
   return (

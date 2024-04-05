@@ -14,7 +14,7 @@ async function fetchCategories() {
     return [];
   }
 }
-
+// Todo: add <Link>
 function NavBar() {
   const [showsideBar, setSidebarState] = useState(false);
   const [closing, setClosing] = useState(false);
