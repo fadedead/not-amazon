@@ -45,13 +45,13 @@ function Carousel({
       <div className="absolute inset-0 flex items-center justify-between p-4">
         <button
           onClick={prev}
-          className="absolute top-0 left-0 h-56 w-12 border border-black"
+          className="absolute top-0 left-0 h-56 w-12 border border-transparent hover:border-black"
         >
           <p className="scale-x-50">&#10094;</p>
         </button>
         <button
           onClick={next}
-          className="absolute top-0 right-0 h-56 w-12 border border-black"
+          className="absolute top-0 right-0 h-56 w-12 border border-transparent hover:border-black"
         >
           <p className="scale-x-50">&#10095;</p>
         </button>
