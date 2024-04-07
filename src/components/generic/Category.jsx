@@ -30,6 +30,7 @@ function Category({ title, items, closeSidebar }) {
 Category.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(PropTypes.object),
+  closeSidebar: PropTypes.func,
 };
 
 export { Category };

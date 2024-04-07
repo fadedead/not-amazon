@@ -16,7 +16,6 @@ function InitialContent() {
     GameBnrImg,
   ];
 
-  //TODO: Add the banner sliders
   //TODO: Add the footer section
 
   // We will fetch the data in components as both are expected to have different data
@@ -27,8 +26,11 @@ function InitialContent() {
           {[...bnrArr.map((s, i) => <img key={i} src={s} alt="" />)]}
         </Carousel>
 
-        <div className="relative -translate-y-96 p-4 grid grid-cols-4 gap-6">
-          <GridItemsBlock />
+        <div className="p-4 relative -translate-y-96 flex flex-col gap-6">
+          <div className="grid grid-cols-4 gap-6">
+            <GridItemsBlock />
+          </div>
+
           <ItemBannerBlock />
         </div>
       </div>
