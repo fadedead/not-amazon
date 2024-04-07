@@ -15,4 +15,4 @@ Welcome to an Amazon-inspired e-commerce site built with React and Tailwind CSS.
 - Add more test cases
 
 ## Deployment
-Live URL: 
+Live URL: https://not-amazon-six.vercel.app/
