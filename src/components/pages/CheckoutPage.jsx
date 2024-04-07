@@ -44,7 +44,7 @@ function CheckoutPage() {
       0,
     );
 
-    setTotalCheckoutPrice(newTotalPrice);
+    setTotalCheckoutPrice(newTotalPrice.toFixed(2));
   }, [checkoutItems]);
 
   return (
