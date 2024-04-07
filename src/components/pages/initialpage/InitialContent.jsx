@@ -16,8 +16,6 @@ function InitialContent() {
     GameBnrImg,
   ];
 
-  //TODO: Add the footer section
-
   // We will fetch the data in components as both are expected to have different data
   return (
     <div className="w-full flex flex-col items-center bg-[#E3E6E6]">

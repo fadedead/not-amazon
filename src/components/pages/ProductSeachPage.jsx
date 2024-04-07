@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ItemCard } from "../generic/ItemCard";
 import { FilterCard } from "../generic/FilterCard";
 import { Loading } from "../generic/Loading";
+import { Footer } from "../footer/Footer";
 
 function ProductSearchWithFilters() {
   const params = useParams();
@@ -67,7 +68,7 @@ function ProductSearchWithFilters() {
   }, [currentCategory]);
 
   return (
-    <div>
+    <div className="min-h-[100vh] flex flex-col">
       <Header currentSelected={currentCategory} />
       <NavBar />
       <div className="w-full p-8 flex justify-between">
@@ -80,7 +81,7 @@ function ProductSearchWithFilters() {
         />
         <div className="w-11/12">
           {loading ? (
-            <div className="h-full flex justify-center items-center">
+            <div className="flex justify-center items-center">
               <Loading size="size-24" />
             </div>
           ) : displayData.length > 0 ? (
@@ -100,6 +101,8 @@ function ProductSearchWithFilters() {
           )}
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }

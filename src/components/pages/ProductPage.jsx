@@ -6,6 +6,7 @@ import { ErrorPage } from "./ErrorPage";
 import { useNavigate } from "react-router-dom";
 import { Loading } from "../generic/Loading";
 import { StarRating } from "../generic/StarRating";
+import { Footer } from "../footer/Footer";
 
 function ProductPage() {
   const navigate = useNavigate();
@@ -66,10 +67,10 @@ function ProductPage() {
   }
 
   return (
-    <div>
+    <div className="min-h-[100vh] flex flex-col">
       <Header />
       <NavBar />
-      <div className="w-4/5 m-auto p-8 flex">
+      <div className="w-4/5 mx-auto p-8 flex">
         <img className="size-96 mr-auto" src={productData.image} alt="" />
         <div className="w-1/2">
           <h1 className="text-2xl font-medium">{productData.title}</h1>
@@ -137,6 +138,7 @@ function ProductPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -11,8 +11,8 @@ function ErrorPage() {
         <div>
           <p className="text-xl text-orange-500">Looking for something?</p>
           <p className="text-lg">
-            We're sorry. The Web address you entered is not a functioning page
-            on our site.
+            We're sorry. There was some error while loading this page or the web
+            address you entered is not a functioning page on our site.
           </p>
         </div>
         <span className="text-lg font-semibold">

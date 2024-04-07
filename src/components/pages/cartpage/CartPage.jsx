@@ -3,6 +3,7 @@ import { Header } from "../../header/Header";
 import { NavBar } from "../../nav/NavBar";
 import { CartItems } from "./CartItems";
 import { SideCard } from "./SideCard";
+import { Footer } from "../../footer/Footer";
 
 function CartPage() {
   // Since FakestoreAPI does not provide a working endpoint to add items to cart we will use local storage
@@ -49,7 +50,7 @@ function CartPage() {
   }, []);
 
   return (
-    <div className="h-lvh bg-[#eaeded]">
+    <div className="min-h-[100vh] flex flex-col bg-[#eaeded]">
       <Header />
       <NavBar />
 
@@ -81,6 +82,7 @@ function CartPage() {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

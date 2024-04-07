@@ -2,6 +2,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import AmazonLogoImg from "../../assets/Amazon_logo_black.svg";
 import padLockImg from "../../assets/lock.svg";
 import { useEffect, useState } from "react";
+import { Footer } from "../footer/Footer";
 
 function CheckoutPage() {
   const navigate = useNavigate();
@@ -47,14 +48,15 @@ function CheckoutPage() {
   }, [checkoutItems]);
 
   return (
-    <div className="h-dvh">
-      <div className="h-16 m-auto w-[60%] flex justify-between items-center">
+    <div className="min-h-[100vh] flex flex-col">
+      <div className="mx-auto h-16 w-[60%] flex justify-evenly items-center">
         <img className="h-8" src={AmazonLogoImg} alt="Amazon" />
         <p className="text-3xl">Checkout</p>
         <img className="h-6" src={padLockImg} alt="secure" />
       </div>
       <hr />
-      <div className="w-[60%] m-auto p-4 flex gap-8 justify-center">
+
+      <div className="w-[60%] mx-auto p-4 flex gap-8 justify-center">
         <div className="p-6 w-4/5 flex flex-col gap-4">
           <div>
             <p className="text-xl font-bold">Enter delivery address</p>
@@ -152,6 +154,8 @@ function CheckoutPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
